@@ -7,7 +7,7 @@ public class playermovement : MonoBehaviour
    
     private InputActionAsset action;
     InputActionMap player;
-    public BUDDYGAMEJAM playerinputscript;
+   
 
     [Header("Input values")]
     [SerializeField] private float speed;
@@ -16,7 +16,7 @@ public class playermovement : MonoBehaviour
     private Vector2 direction;
     private void Awake()
     {
-        playerinputscript= new BUDDYGAMEJAM();
+       
         action=this.GetComponent<PlayerInput>().actions;
         player = action.FindActionMap("Player");
 
@@ -33,7 +33,7 @@ public class playermovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        direction=context.ReadValue<Vector2>();
+        direction=context.ReadValue<Vector2>() * speed;
     }
 
     private void FixedUpdate()
